@@ -1,0 +1,23 @@
+{
+  "name": "admin",
+  "description": "admin templates",
+  "main": "index.js",
+  "authors": [
+    "MI"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "bootstrap": "^3.3.6",
+    "reset-css": "^2.0.2011012603"
+  }
+}
