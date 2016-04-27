@@ -1,0 +1,221 @@
+@import "../../bower_components/reset-css/_reset.scss";
+@import "../../App/css/selectric.scss";
+
+$widthSite:1100px;
+$heightTopBar:50px;
+@import url(https://fonts.googleapis.com/css?family=Didact+Gothic&subset=latin,cyrillic-ext);
+
+$fontNav:'Didact Gothic', sans-serif;
+
+.App{
+    margin: 0 auto;
+    width: $widthSite;
+    height: auto;
+    background: #fff;
+    // border:1px solid red;
+    padding: 0px 10px;
+}
+/** ### INDEX ###**/
+.topBar{
+    width: 100%;
+    height: $heightTopBar;
+    font-size: 0;
+    font-family: $fontNav;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    .smallBox{
+        display: inline-block;
+        vertical-align: top;
+        width: 238px;
+        height: $heightTopBar;
+        // border:1px solid red;
+        font-size: 16px;
+    }
+    .bigBox{
+        @extend .smallBox;
+        width: 600px;
+        form{
+            width: 250px;
+            margin: 8px auto 0px auto;
+            input{
+                display: inline-block;
+                width: 170px;
+                vertical-align: top;
+            }
+            .Button{
+                vertical-align: top;
+            }
+        }
+    }
+    .titleApp{
+        h3{
+            text-align: center;
+            font-size: 19px;
+            line-height: 45px;
+        }
+    }
+    .exit{
+        text-align: center;
+        text-transform: capitalize;
+        line-height: 45px;
+        a{
+            text-decoration: none;
+            font-weight: bold;
+            color:#000;
+            transition: all .3s;
+            &:hover{
+                color:orange;
+
+            }
+        }
+    }
+}
+.leftBar{
+    vertical-align: top;
+    display: inline-block;
+    width: 238px;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    padding: 8px;
+    .box{
+        margin: 3px 0px;
+        .add{
+            margin: 3px 0px;
+            display: block;
+        }
+        a{
+            text-decoration: none;
+            display: block;
+        }
+        .navLink{
+            display: block;
+            text-decoration: none;
+            padding: 5px;
+            &:hover{
+                background: skyblue;
+            }
+        }
+        .panel{
+            margin-bottom: 2px;
+        }
+        .panel-heading{
+            background-image: linear-gradient(to bottom,skyblue 0,#2EADD3 100%);
+        }
+        .panel-title{
+            a{
+                color:#fff;
+                font-weight: bold;
+            }
+        }
+    }
+}
+.content{
+    @extend .leftBar;
+    width: 838px;
+    height: auto;
+
+}
+/** ### END INDEX ###**/
+/** ### Category ###**/
+.addCategory{
+    padding-right: 10px;
+    h2{
+        text-align: center;
+        font-size: 23px;
+        padding: 20px 0px;
+    }
+}
+/** ### End Category ###**/
+/** ### Under Category ###**/
+.addUnderCategory{
+    @extend .addCategory;
+}
+/** ### End Under Category ###**/
+/** ### Add Goods ###**/
+.addGoods{
+    @extend .addCategory;
+    textarea{
+        resize: vertical;
+    }
+}
+/** ### End Add Goods ###**/
+/** ### List Goods ###**/
+.listGoods{
+    h2{
+        text-align: center;
+        font-size: 23px;
+        padding: 20px 0px;
+    }
+    .infoBox{
+        width: 100%;
+        height: 40px;
+        background: #2FADD3;
+        .count{
+            color:#fff;
+            font-weight: bold;
+            font-family: $fontNav;
+            line-height: 28px;
+            font-size: 16px;
+            padding: 5px;
+        }
+    }
+}
+/** ### End List Goods ###**/
+/** ### List Category ###**/
+.listCategory{
+    @extend .listGoods;
+}
+/** ### End List Category ###**/
+/** ### List Under Category ###**/
+.listUnderCategory{
+    @extend .listGoods;
+}
+/** ### End List Under Category ###**/
+/** ### One goods ###**/
+.oneGoods{
+    h2{
+        text-align: center;
+        font-size: 23px;
+        padding: 20px 0px;
+    }
+    .fotoBox{
+        display: inline-block;
+        width: 250px;
+        height: 250px;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    .descGoods{
+        margin-left: 5px;
+        vertical-align: top;
+        display: inline-block;
+        width: 560px;
+        height: auto;
+        padding: 0px 5px;
+        .desc{
+            display: inline-block;
+            width: 300px;
+            height: auto;
+            margin: 0px 0px 10px 0px;
+        }
+        .allInfo{
+            display: inline-block;
+            vertical-align: top;
+            width: 230px;
+            height: auto;
+            .item{
+                font-weight: bold;
+                font-family: $fontNav;
+            }
+            .key{
+                font-weight: bold;
+            }
+            td{
+                padding: 5px;
+            }
+        }
+    }
+}
+/** ### End One Goods ###**/
