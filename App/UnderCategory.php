@@ -14,6 +14,16 @@ class UnderCategory extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public static function getUnCategory()
+    {
+        return DB::table('undercategory')->get();
+    }
+
+    public static function getUnCategoryById($id)
+    {
+        return DB::table('undercategory')->where('id',$id)->first();
+    }
+
     public static function addUnCategory($id, $name, $url)
     {
         DB::table('undercategory')->insert(

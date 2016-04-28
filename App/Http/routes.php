@@ -18,6 +18,9 @@ Route::post('/admin/category/add', ['middleware' => 'auth', 'uses' => 'ACategory
 Route::get('/admin/uncategory/add', ['middleware' => 'auth', 'uses' => 'AUnderCategoryController@showAddUnCategoryAction']);
 Route::post('/admin/uncategory/add', ['middleware' => 'auth', 'uses' => 'AUnderCategoryController@addUnCategoryAction']);
 Route::get('/admin/goods/add', ['middleware' => 'auth', 'uses' => 'AGoodsController@showAddGoodsAction']);
+Route::post('/admin/goods/add', ['middleware' => 'auth', 'uses' => 'AGoodsController@AddGoodsAction']);
+Route::get('/admin/{category}/{uncategory}', ['middleware' => 'auth', 'uses' => '']);
+Route::get('/admin/{category}/{uncategory}/{id}', ['middleware' => 'auth', 'uses' => '']);
 Route::get('/login', function(){
    return view('auth.login');
 });
