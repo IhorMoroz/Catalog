@@ -355,6 +355,24 @@ table {
   padding: 0px 10px;
 }
 
+/** ### OTHER ###**/
+
+.center {
+  text-align: center;
+}
+
+.center h3 {
+  padding: 20px 0px;
+  font-family: "Didact Gothic", sans-serif;
+  font-size: 19px;
+}
+
+.center .red {
+  color: red;
+}
+
+/** ### END OTHER ###**/
+
 /** ### INDEX ###**/
 
 .topBar {

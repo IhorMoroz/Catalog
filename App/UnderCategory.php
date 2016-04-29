@@ -24,6 +24,11 @@ class UnderCategory extends Model
         return DB::table('undercategory')->where('id',$id)->first();
     }
 
+    public static function getUnCategoryByUrl($url)
+    {
+        return DB::table('undercategory')->where('url', '/'.$url)->first();
+    }
+
     public static function addUnCategory($id, $name, $url)
     {
         DB::table('undercategory')->insert(

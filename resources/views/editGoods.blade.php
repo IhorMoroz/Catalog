@@ -1,13 +1,14 @@
-<form class="addGoods form-horizontal" action="{{ url('/admin/goods/add') }}" method="POST" enctype="multipart/form-data">
-    <h2>Добавление Товара</h2>
+<form class="addGoods form-horizontal" action="{{ url('/admin/goods/edit') }}" method="POST" enctype="multipart/form-data">
+    <h2>Редактирование Товара</h2>
     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+    <input type="hidden" name="id" value="{{$oldGoods->id}}"/>
     <div class="form-group">
         <label for="inputEmail1" class="col-sm-2 control-label">Артикт</label>
         <div class="col-sm-10">
             @if($errors->first('article'))
                 <p style="color:red;">{{$errors->first('article')}}</p>
             @endif
-            <input type="text" name="article" class="form-control" id="inputEmail1" placeholder="Артикт">
+            <input type="text" name="article" class="form-control" id="inputEmail1" placeholder="Артикт" value="{{$oldGoods->article}}">
         </div>
     </div>
     <div class="form-group">
@@ -16,7 +17,7 @@
             @if($errors->first('name'))
                 <p style="color:red;">{{$errors->first('name')}}</p>
             @endif
-            <input type="text" name="name" class="form-control" id="inputEmail2" placeholder="Название">
+            <input type="text" name="name" class="form-control" id="inputEmail2" placeholder="Название" value="{{$oldGoods->name}}">
         </div>
     </div>
     <div class="form-group">
@@ -25,7 +26,7 @@
             @if($errors->first('description'))
                 <p style="color:red;">{{$errors->first('description')}}</p>
             @endif
-            <textarea name="description" rows="3" class="form-control"></textarea>
+            <textarea name="description" rows="3" class="form-control">{{$oldGoods->description}}</textarea>
         </div>
     </div>
     <div class="form-group">
@@ -34,7 +35,7 @@
             @if($errors->first('size'))
                 <p style="color:red;">{{$errors->first('size')}}</p>
             @endif
-            <input type="text" name="size" class="form-control" id="inputPassword4" placeholder="Размер">
+            <input type="text" name="size" class="form-control" id="inputPassword4" placeholder="Размер" value="{{$oldGoods->size}}">
         </div>
     </div>
     <div class="form-group">
@@ -43,7 +44,7 @@
             @if($errors->first('price'))
                 <p style="color:red;">{{$errors->first('price')}}</p>
             @endif
-            <input type="text" name="price" class="form-control" id="inputPassword5" placeholder="Цена">
+            <input type="text" name="price" class="form-control" id="inputPassword5" placeholder="Цена" value="{{$oldGoods->price}}">
         </div>
     </div>
     <div class="form-group">
@@ -53,6 +54,10 @@
                 <p style="color:red;">{{$errors->first('image')}}</p>
             @endif
             <input type="file" name="image" id="inputPassword6">
+            <input type="hidden" name="oldImage" value="{{$oldGoods->image}}"/>
+            <div style="width: 300px;height: 300px;overflow:hidden;">
+                <img src="/img/{{$oldGoods->image}}" alt="">
+            </div>
         </div>
     </div>
     <div class="form-group">
@@ -60,7 +65,11 @@
         <div class="col-sm-10">
             <select class="" name="unCategory">
                 @foreach($unCategory as $item)
-                    <option value="{{$item->id}}">{{$item->name}}</option>
+                    @if($oldGoods->un_category_id == $item->id)
+                        <option selected value="{{$item->id}}">{{$item->name}}</option>
+                    @else
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                    @endif
                 @endforeach
             </select>
         </div>
@@ -70,7 +79,11 @@
         <div class="col-sm-10">
             <select class="" name="sex">
                 @foreach($sex as $item)
-                    <option value="{{$item->id}}">{{$item->name}}</option>
+                    @if($oldGoods->sex_id == $item->id)
+                        <option selected value="{{$item->id}}">{{$item->name}}</option>
+                    @else
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                    @endif
                 @endforeach
             </select>
         </div>
@@ -89,7 +102,11 @@
         <div class="col-sm-10">
             <select class="" name="seasons">
                 @foreach($seasons as $item)
-                    <option value="{{$item->id}}">{{$item->name}}</option>
+                    @if($oldGoods->season_id == $item->id)
+                        <option selected value="{{$item->id}}">{{$item->name}}</option>
+                    @else
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                    @endif
                 @endforeach
             </select>
         </div>

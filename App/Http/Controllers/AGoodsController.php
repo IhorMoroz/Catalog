@@ -68,6 +68,67 @@ class AGoodsController extends Controller
         }
     }
 
+    public function showEditGoodsAction($id)
+    {
+        $goods = [
+            'oldGoods' => Goods::getGoodsById((int)$id),
+            'unCategory' => UnderCategory::getUnCategory(),
+            'seasons' => Seasons::getSeasons(),
+            'sex' => Sex::getSex()
+        ];
+        $vars = [
+            'categoryMenu' => $this->AdminCategory,
+            'content' => view('editGoods', $goods)
+        ];
+        return view('index', $vars);
+    }
+
+    public function editGoodsAction(Request $request)
+    {
+        $this->validate($request, [
+            'article' => 'alpha_num|required',
+            'name' => 'required|max:100|min:3',
+            'description' => 'required|max:600',
+            'size' => 'required|max:100',
+            'price' => 'integer|required',
+        ]);
+
+        if (Input::hasFile('image')) {
+            $format = $this->getFormatImg();
+            $img = Image::make($_FILES['image']['tmp_name']);
+            $img->resize(200, 300);
+            $nameImg = $this->getNameImg($format);
+            $img->save('img/' . $nameImg);
+        }else{
+            $nameImg = $_POST['oldImage'];
+        }
+
+        $category = UnderCategory::getUnCategoryById($_POST['unCategory']);
+        Goods::editGoods(
+            $_POST['id'],
+            '#'.$_POST['article'],
+            $_POST['name'],
+            $_POST['description'],
+            $_POST['price'],
+            $nameImg,
+            $_POST['active'],
+            $_POST['sex'],
+            $category->category_id,
+            $_POST['unCategory'],
+            $_POST['seasons'],
+            '',//$_POST['brand'],
+            '',//$_POST['material'],
+            $_POST['size']
+        );
+        Session::flash('success', 'Upload successfully');
+        return redirect('/admin/goods/add');
+    }
+
+    public function deleteGoodsByIdAction($id){
+        Goods::deleteGoods($id);
+        return redirect()->back();
+    }
+
     private function getFormatImg()
     {
         $format = null;

@@ -26,4 +26,16 @@ class ACategoryController extends Controller
         Category::addCategory($_POST['addNameCategory'], '/'.$_POST['addUrlCategory']);
         return redirect('/admin/category/add');
     }
+
+    public function showListCategoryAction()
+    {
+        $list = [
+            'category' => Category::getCategory()
+        ];
+        $vars = [
+            'categoryMenu' => $this->AdminCategory,
+            'content' => view('listCategory', $list)
+        ];
+        return view('index', $vars);
+    }
 }

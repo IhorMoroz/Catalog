@@ -9,6 +9,7 @@
     <script src="/js/jquery.min.js" charset="utf-8"></script>
     <script src="/js/bootstrap.min.js" charset="utf-8"></script>
     <script src="/js/jquery.selectric.js" charset="utf-8"></script>
+    <script src="/js/main.js" charset="utf-8"></script>
 </head>
 <body>
 <div class="App">
@@ -39,7 +40,7 @@
                 <div class="panel-heading blue-panel" role="tab" id="heading{{$i}}">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$i}}" aria-expanded="true" aria-controls="collapse{{$i}}">
-                            {{$k}} <span class="caret"></span>
+                            {{$k}} @if(count($v) > 0) <span class="caret"></span> @endif
                         </a>
                     </h4>
                 </div>
@@ -47,7 +48,7 @@
                     <div class="">
                         @if(count($v) >= 1)
                             @foreach($v as $item)
-                            <a href="{{$item[1]}}" class="navLink">{{$item[0]}}</a>
+                            <a href="/admin{{$item[1]}}" class="navLink">{{$item[0]}}</a>
                             @endforeach
                         @endif
                     </div>
@@ -58,18 +59,18 @@
         </div>
         <div class="box">
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="heading3">
+                <div class="panel-heading" role="tab" id="heading30">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse30" aria-expanded="true" aria-controls="collapse30">
                             Показать <span class="caret"></span>
                         </a>
                     </h4>
                 </div>
-                <div id="collapse3" class="panel-collapse collapse " role="tabpanel" aria-labelledby="heading3">
+                <div id="collapse30" class="panel-collapse collapse " role="tabpanel" aria-labelledby="heading30">
                     <div class="">
-                        <a href="#" class="navLink">text1</a>
-                        <a href="#" class="navLink">text2</a>
-                        <a href="#" class="navLink">text3</a>
+                        <a href="/admin/category/list" class="navLink">Категории</a>
+                        <a href="/admin/uncategory/list" class="navLink">Подкатегории</a>
+                        <a href="#" class="navLink">Слайды</a>
                     </div>
                 </div>
             </div>

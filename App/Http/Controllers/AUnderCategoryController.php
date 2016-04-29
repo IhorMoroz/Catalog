@@ -32,4 +32,17 @@ class AUnderCategoryController extends Controller
         UnderCategory::addUnCategory($_POST['category'], $_POST['name'], '/'.$_POST['url']);
         return redirect('/admin/uncategory/add');
     }
+
+    public function showListUnCategoryAction()
+    {
+        $unCategory = [
+            'parentCategory' => Category::getCategory(),
+            'unCategory' => UnderCategory::getUnCategory()
+        ];
+        $vars = [
+            'categoryMenu' => $this->AdminCategory,
+            'content' => view('listUnCategory', $unCategory)
+        ];
+        return view('index', $vars);
+    }
 }
